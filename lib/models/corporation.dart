@@ -1,3 +1,54 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'corporation.g.dart';
+
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+class Corporation {
+  Corporation({
+    this.corpCode,
+    this.corpName,
+    this.stockCode,
+    this.corpCls,
+    this.reportNm,
+    this.receptNo,
+    this.flrNm,
+    this.rceptDt,
+    this.rm,
+  });
+
+  /// 고유번호
+  final String corpCode;
+
+  /// 종목명(법인명)
+  final String corpName;
+
+  /// 종목코드
+  final String stockCode;
+
+  /// 법인구분
+  final CorpClass corpCls;
+
+  /// 보고서명
+  final String reportNm;
+
+  /// 접수 번호
+  final String receptNo;
+
+  /// 공시 제출인명
+  final String flrNm;
+
+  /// 접수일자
+  final String rceptDt;
+
+  /// 비고 - 유, 코, 채, 넥, 공, 연, 정, 철
+  final String rm;
+
+  factory Corporation.fromJson(Map<String, dynamic> json) =>
+      _$CorporationFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CorporationToJson(this);
+}
+
 enum CorpClass {
   Y,
   K,
