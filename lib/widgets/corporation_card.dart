@@ -5,7 +5,7 @@ import 'package:open_dart/widgets/corporation_chip.dart';
 class CorporationCard extends StatelessWidget {
   const CorporationCard({Key key, this.corporation}) : super(key: key);
 
-  final dynamic corporation;
+  final Corporation corporation;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class CorporationCard extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 child: Text(
-                  'NH투자증권',
+                  corporation.corpName,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -42,7 +42,9 @@ class CorporationCard extends StatelessWidget {
                 ),
               ),
               Container(
-                child: CorpClassChip(corpClass: CorpClass.K),
+                child: CorpClassChip(
+                  corpClass: corporation.corpCls,
+                ),
               )
             ],
           ),
@@ -59,7 +61,7 @@ class CorporationCard extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  '2020년 01월 17일',
+                  corporation.rceptDt,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -72,7 +74,7 @@ class CorporationCard extends StatelessWidget {
           ),
           SizedBox(height: 8),
           Text(
-            '[첨부추가]일괄신고추가서류(파생결합증권-주가연계증권)',
+            corporation.reportNm,
             style: TextStyle(
               fontSize: 12,
               color: Colors.black38,
