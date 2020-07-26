@@ -1,0 +1,1 @@
+export './corporation.dart';

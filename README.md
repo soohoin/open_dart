@@ -4,5 +4,5 @@
 
 - HomeScreen 추가
 - Corporation Card 추가
-- Custom Chip 추가
+- Raw Custom Chip 추가
 - Corporation Chip 추가
