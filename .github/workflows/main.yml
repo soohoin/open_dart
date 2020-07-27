@@ -45,7 +45,7 @@ jobs:
       - name: create key file
         env:
           PLAY_STORE_UPLOAD_KEY: ${{ secrets.PLAY_STORE_UPLOAD_KEY }}
-          PLAY_STORE_UPLOAD_KEY_INFO: ${{ secrets.$PLAY_STORE_UPLOAD_KEY_INFO }}
+          PLAY_STORE_UPLOAD_KEY_INFO: ${{ secrets.PLAY_STORE_UPLOAD_KEY_INFO }}
         run: |
           echo "${PLAY_STORE_UPLOAD_KEY}" | base64 --decode > $HOME/android/app/upload_key.jks
           echo "${PLAY_STORE_UPLOAD_KEY_INFO}" | base64 --decode > $HOME/android/key.properties
