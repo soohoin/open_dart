@@ -27,8 +27,7 @@ jobs:
       - name: Install Fastlane
         run: |
           cd android
-          gem install bundle
-          gem list bundle
+          bundle install
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
