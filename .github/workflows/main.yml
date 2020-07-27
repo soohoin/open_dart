@@ -33,7 +33,8 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: "stable"
-      - run: ls
+      - run: echo ${{ github.run_number }}
+      - run: fastlane build appbundle --build_number=${{ github.run_number }}
       # Runs a single command using the runners shell
       # - name: deploy to internal
       #   run: |
