@@ -28,7 +28,7 @@ jobs:
       - name: Create api key file
         env:
           OPEN_DART_API_KEY: ${{ secrets.OPNE_DART_API_KEY }}
-        run: echo "var dartOpenApiKey = '${OPEN_DART_API_KEY}';" > cat lib/widgets/api_key.dart
+        run: echo "var dartOpenApiKey = '${OPEN_DART_API_KEY}';" > lib/widgets/api_key.dart
 
       - name: Create upload key file
         env:
