@@ -33,9 +33,10 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: "stable"
-      - run: echo ${{ github.run_number }}
-      - run: flutter build appbundle --build_number=${{ github.run_number }}
-      # Runs a single command using the runners shell
+
+      - name: build android release
+        run: flutter build appbundle --build-number=${{ github.run_number }}
+      - run: echo $HOME
       # - name: deploy to internal
       #   run: |
       #     cd android
