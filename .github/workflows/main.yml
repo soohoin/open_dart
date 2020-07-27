@@ -26,7 +26,7 @@ jobs:
           ruby-version: "2.6"
       - run: echo $HOME
       - name: Create api key file
-        run: echo "var dartOpenApiKey = '${OPEN_DART_API_KEY}'" > lib/widgets/api_key.dart
+        run: echo "var dartOpenApiKey = '${OPEN_DART_API_KEY}';" > lib/widgets/api_key.dart
         env:
           OPEN_DART_API_KEY: ${{ secrets.OPNE_DART_API_KEY }}
       - name: Install Fastlane
