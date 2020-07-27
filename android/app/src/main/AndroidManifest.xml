@@ -7,8 +7,10 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="open_dart"
-        android:icon="@mipmap/ic_launcher">
+        android:label="오픈다트"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        >
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
