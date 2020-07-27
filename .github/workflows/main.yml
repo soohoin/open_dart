@@ -6,9 +6,9 @@ name: CI
 # events but only for the master branch
 on:
   push:
-    branches: [ fastlane ]
+    branches: [fastlane]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -19,9 +19,16 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: "2.6"
+      - name: Install Fastlane
+        run: |
+          cd android
+          bundle install
 
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: fastlane build_and_deploy_internal
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: fastlane build_and_deploy_internal
