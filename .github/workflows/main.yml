@@ -56,4 +56,4 @@ jobs:
       - name: deploy to internal
         run: |
           cd android
-          bundle exec fastlane build_and_deploy_internal
+          bundle exec fastlane deploy_internal
