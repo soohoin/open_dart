@@ -38,7 +38,7 @@ jobs:
         run: |
           echo "${PLAY_STORE_UPLOAD_KEY}" | base64 --decode > android/app/upload_key.jks
           echo "${PLAY_STORE_UPLOAD_KEY_INFO}" | base64 --decode > android/key.properties
-          echo "${GOOGLE_SERVICE_ACCOUNT_JSON}" | base64 --decode > google_service_account.json
+          echo "${GOOGLE_SERVICE_ACCOUNT_JSON}" | base64 --decode > android/google_service_account.json
 
       - name: Install Fastlane
         run: |
