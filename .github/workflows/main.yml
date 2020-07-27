@@ -34,7 +34,7 @@ jobs:
         env:
           PLAY_STORE_UPLOAD_KEY: ${{ secrets.PLAY_STORE_UPLOAD_KEY }}
           PLAY_STORE_UPLOAD_KEY_INFO: ${{ secrets.PLAY_STORE_UPLOAD_KEY_INFO }}
-          GOOGLE_UPLOAD_AUTH: ${{ secrets.GOOGLE_UPLOAD_AUTH }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
         run: |
           echo "${PLAY_STORE_UPLOAD_KEY}" | base64 --decode > android/app/upload_key.jks
           echo "${PLAY_STORE_UPLOAD_KEY_INFO}" | base64 --decode > android/key.properties
