@@ -10,7 +10,7 @@ class Corporation {
     this.stockCode,
     this.corpCls,
     this.reportNm,
-    this.receptNo,
+    this.rceptNo,
     this.flrNm,
     this.rceptDt,
     this.rm,
@@ -32,7 +32,7 @@ class Corporation {
   final String reportNm;
 
   /// 접수 번호
-  final String receptNo;
+  final String rceptNo;
 
   /// 공시 제출인명
   final String flrNm;
