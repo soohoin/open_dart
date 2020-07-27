@@ -24,6 +24,11 @@ jobs:
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: "2.6"
+      - run: echo $HOME
+      - name: Create api key file
+        run: echo "var dartOpenApiKey = '${OPEN_DART_API_KEY}'" > lib/widgets/api_key.dart
+        env:
+          OPEN_DART_API_KEY: ${{ secrets.OPNE_DART_API_KEY }}
       - name: Install Fastlane
         run: |
           cd android
@@ -36,7 +41,6 @@ jobs:
 
       - name: build android release
         run: flutter build appbundle --build-number=${{ github.run_number }}
-      - run: echo $HOME
       # - name: deploy to internal
       #   run: |
       #     cd android
