@@ -1,4 +1,7 @@
+key.properties
+*.jks
 api_key.dart
+
 # Miscellaneous
 *.class
 *.log
