@@ -19,7 +19,9 @@ platform :android do
   desc "Deploy a new version to the Google Play internal"
   lane :build_and_deploy_internal do
     upload_to_play_store(
-      # aab_path: '$HOME/'
+      aab_path: 'build/app/outputs/bundle/release/app-release.aab'
+      json_key_data: 'google_service_account.json'
+      release_status: 'draft'
     )
   end
 end

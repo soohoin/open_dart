@@ -34,9 +34,11 @@ jobs:
         env:
           PLAY_STORE_UPLOAD_KEY: ${{ secrets.PLAY_STORE_UPLOAD_KEY }}
           PLAY_STORE_UPLOAD_KEY_INFO: ${{ secrets.PLAY_STORE_UPLOAD_KEY_INFO }}
+          GOOGLE_UPLOAD_AUTH: ${{ secrets.GOOGLE_UPLOAD_AUTH }}
         run: |
           echo "${PLAY_STORE_UPLOAD_KEY}" | base64 --decode > android/app/upload_key.jks
           echo "${PLAY_STORE_UPLOAD_KEY_INFO}" | base64 --decode > android/key.properties
+          echo "${GOOGLE_SERVICE_ACCOUNT_JSON}" | base64 --decode > google_service_account.json
 
       - name: Install Fastlane
         run: |
@@ -51,8 +53,7 @@ jobs:
       - name: build android release
         run: flutter build appbundle --build-number=${{ github.run_number }}
 
-      - run: ls
-      # - name: deploy to internal
-      #   run: |
-      #     cd android
-      #     bundle exec fastlane build_and_deploy_internal
+      - name: deploy to internal
+        run: |
+          cd android
+          bundle exec fastlane build_and_deploy_internal
