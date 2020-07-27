@@ -6,9 +6,9 @@ name: CI
 # events but only for the master branch
 on:
   push:
-    branches: [ fastlane ]
+    branches: [fastlane]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -19,9 +19,39 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: "2.6"
+      - run: echo $HOME
+      - name: Create api key file
+        env:
+          OPEN_DART_API_KEY: ${{ secrets.OPNE_DART_API_KEY }}
+        run: echo "var dartOpenApiKey = '${OPEN_DART_API_KEY}';" > lib/widgets/api_key.dart
+      - name: Install Fastlane
+        run: |
+          cd android
+          gem update --system
+          bundle install
 
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: fastlane build_and_deploy_internal
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+
+      - name: build android release
+        run: flutter build appbundle --build-number=${{ github.run_number }}
+
+      - name: create key file
+        env:
+          PLAY_STORE_UPLOAD_KEY: ${{ secrets.PLAY_STORE_UPLOAD_KEY }}
+          PLAY_STORE_UPLOAD_KEY_INFO: ${{ secrets.$PLAY_STORE_UPLOAD_KEY_INFO }}
+        run: |
+          echo "${PLAY_STORE_UPLOAD_KEY}" | base64 --decode > $HOME/android/app/upload_key.jks
+          echo "${PLAY_STORE_UPLOAD_KEY_INFO}" | base64 --decode > $HOME/android/key.properties
+
+      - run: ls
+      # - name: deploy to internal
+      #   run: |
+      #     cd android
+      #     bundle exec fastlane build_and_deploy_internal
