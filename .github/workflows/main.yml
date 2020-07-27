@@ -34,7 +34,7 @@ jobs:
         with:
           channel: "stable"
       - run: echo ${{ github.run_number }}
-      - run: fastlane build appbundle --build_number=${{ github.run_number }}
+      - run: flutter build appbundle --build_number=${{ github.run_number }}
       # Runs a single command using the runners shell
       # - name: deploy to internal
       #   run: |
