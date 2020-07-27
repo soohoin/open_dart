@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:open_dart/models/corporation.dart';
-import 'package:open_dart/widgets/corporation_chip.dart';
+import 'package:open_dart/widgets/corp_class_chip.dart';
 
 class CorporationCard extends StatelessWidget {
   const CorporationCard({Key key, this.corporation}) : super(key: key);
