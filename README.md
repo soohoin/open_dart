@@ -1,6 +1,13 @@
 # open_dart
 
-## 스터디 1일차
+## 주의사항
+
+프로젝트에는 OPEN API key가 필요합니다  
+디스코드에서 확인하시거나 요청하세요
+
+## 스터디 기록
+
+### 1일차
 
 - HomeScreen 추가
 - Corporation Card 추가
@@ -11,7 +18,10 @@
 - 다트 공시검색 OPEN API 연결
 - [https://opendart.fss.or.kr/api/list.json]
 
+### 2일차
 
-## 주의사항
-프로젝트에는 OPEN API key가 필요합니다  
-디스코드에서 확인하시거나 요청하세요
+- 공시검색 결과 UI 변경
+- 기업개황(기업정보) API 연결
+- App icon 변경
+- 앱이름 변경
+- 배포 파이프라인 설계 (github actions, fastlane)
