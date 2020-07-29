@@ -21,5 +21,7 @@ class DartOpenApiService {
     );
 
     return CorporationResponse.fromJson(response.data);
+
+    
   }
 }
