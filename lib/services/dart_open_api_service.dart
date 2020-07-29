@@ -19,7 +19,24 @@ class DartOpenApiService {
       url,
       queryParameters: queryParams,
     );
-
     return CorporationResponse.fromJson(response.data);
   }
+
+  Future<CorporationResponse> getCorporationDetail(String corpCode) async {
+    String url = 'https://opendart.fss.or.kr/api/company.json';
+
+    Map<String, dynamic> queryParams = {
+      'crtfc_key': dartOpenApiKey,
+      'corp_code': corpCode
+    };
+
+    Response response = await dio.get(
+      url,
+      queryParameters: queryParams,
+    );
+    print(response.data);
+    return CorporationResponse.fromJson(response.data);
+  }
+
+  
 }

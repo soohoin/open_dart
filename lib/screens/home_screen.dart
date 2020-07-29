@@ -33,6 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
               physics: AlwaysScrollableScrollPhysics(),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               itemBuilder: (context, index) {
+                DartOpenApiService()
+                    .getCorporationDetail(res.list[index].corpCode);
                 return CorporationCard(
                   corporation: res.list[index],
                 );
